@@ -4,7 +4,7 @@ const { config } = require('../config/config');
 class ExternalApiService {
     async getContext(prompt) {
         try {
-            const response = await axios.post(config.EXTERNAL_API_URL_1, {
+            const response = await axios.post(config.API_CHROMA, {
                 prompt: prompt
             }, {
                 headers: {
@@ -14,14 +14,13 @@ class ExternalApiService {
 
             return response.data.response;
         } catch (error) {
-            console.error('Error al llamar a la API de chroma:', error);
             throw new Error('Error en la comunicación con la base de datos');
         }
     }
 
     async getAIResponse(message) {
         try {
-            const response = await axios.post(config.EXTERNAL_API_URL_2, {
+            const response = await axios.post(config.API_OLLAMA, {
                 message: message
             }, {
                 headers: {
@@ -31,7 +30,6 @@ class ExternalApiService {
 
             return response.data.response;
         } catch (error) {
-            console.error('Error al llamar a la API de Ollama:', error);
             throw new Error('Error en la comunicación con la IA');
         }
     }
