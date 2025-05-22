@@ -1,5 +1,5 @@
 const { ExternalApiServiceImpl } = require('../infrastructure/services/ExternalApiServiceImpl');
-const { PromptServiceImpl } = require('../application/services/PromptServiceImpl');
+const { PromptServiceImpl } = require('../infrastructure/services/PromptServiceImpl');
 const { PromptController } = require('../infrastructure/controllers/PromptController');
 
 /**
