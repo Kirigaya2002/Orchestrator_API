@@ -14,8 +14,8 @@ class ExternalApiService {
 
             return response.data.response;
         } catch (error) {
-            console.error('Error al llamar a la API externa 1:', error);
-            throw new Error('Error en la comunicación con la API externa 1');
+            console.error('Error al llamar a la API de chroma:', error);
+            throw new Error('Error en la comunicación con la base de datos');
         }
     }
 
@@ -31,8 +31,8 @@ class ExternalApiService {
 
             return response.data.response;
         } catch (error) {
-            console.error('Error al llamar a la API externa 2:', error);
-            throw new Error('Error en la comunicación con la API externa 2');
+            console.error('Error al llamar a la API de Ollama:', error);
+            throw new Error('Error en la comunicación con la IA');
         }
     }
 }
