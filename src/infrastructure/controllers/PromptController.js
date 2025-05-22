@@ -66,10 +66,6 @@ class PromptController {
     async processPrompt(req, res, next) {
         try {
             const { prompt } = req.body;
-            
-            if (!prompt || prompt.trim() === '') {
-                throw new AppError('El prompt es requerido y no puede estar vacío', 400);
-            }
 
             const result = await this.promptService.processPrompt(prompt);
             res.json(ApiResponse.success({ response: result }));
