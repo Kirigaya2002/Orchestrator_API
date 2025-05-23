@@ -23,12 +23,13 @@ class ExternalApiServiceImpl extends IExternalApiService {
      */
     async getContext(question) {
         try {
-            const response = await axios.post(
+            console.log(config.API_Chroma);
+            const response = await axios.get(
                 config.API_CHROMA,
                 { question },
                 this.#getCommonConfig()
             );
-
+            
             if (!response.data || !response.data.response) {
                 throw new AppError('Respuesta inválida de la base de datos', 500);
             }
