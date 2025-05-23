@@ -49,7 +49,11 @@ class ExternalApiServiceImpl extends IExternalApiService {
         try {
             const response = await axios.post(
                 config.API_OLLAMA,
-                { question },
+                {
+                    model: 'gemma3',
+                    prompt: question,
+                    stream: false
+                },
                 this.#getCommonConfig()
             );
 
