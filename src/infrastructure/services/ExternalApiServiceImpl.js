@@ -26,7 +26,7 @@ class ExternalApiServiceImpl extends IExternalApiService {
             console.log(config.API_Chroma);
             const response = await axios.get(
                 config.API_CHROMA,
-                { question },
+                question,
                 this.#getCommonConfig()
             );
             
