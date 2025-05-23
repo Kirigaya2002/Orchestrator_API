@@ -21,11 +21,11 @@ class ExternalApiServiceImpl extends IExternalApiService {
     /**
      * @inheritdoc
      */
-    async getContext(prompt) {
+    async getContext(question) {
         try {
             const response = await axios.post(
                 config.API_CHROMA,
-                { prompt },
+                { question },
                 this.#getCommonConfig()
             );
 
