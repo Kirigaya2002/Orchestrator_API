@@ -45,11 +45,11 @@ class ExternalApiServiceImpl extends IExternalApiService {
     /**
      * @inheritdoc
      */
-    async getAIResponse(message) {
+    async getAIResponse(question) {
         try {
             const response = await axios.post(
                 config.API_OLLAMA,
-                { message },
+                { question },
                 this.#getCommonConfig()
             );
 
