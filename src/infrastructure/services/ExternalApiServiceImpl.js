@@ -23,19 +23,21 @@ class ExternalApiServiceImpl extends IExternalApiService {
      */
     async getContext(question) {
         try {
-            console.log(config.API_Chroma);
             const response = await axios.get(
-                config.API_CHROMA,
-                question,
-                this.#getCommonConfig()
+                config.API_CHROMA+"?question="+question,
+               /* {
+                    params: { question },
+                    ...this.#getCommonConfig()
+                }*/
             );
-            
-            if (!response.data || !response.data.response) {
+
+            if (!response) {
                 throw new AppError('Respuesta inválida de la base de datos', 500);
             }
 
-            return response.data.response;
+            return response.data.respuesta;
         } catch (error) {
+            console.error(error);
             throw new AppError(
                 'Error en la comunicación con la base de datos',
                 error.response?.status || 500
@@ -51,19 +53,15 @@ class ExternalApiServiceImpl extends IExternalApiService {
             const response = await axios.post(
                 config.API_OLLAMA,
                 {
-                    model: 'gemma3',
+                    model: "gemma3",
                     prompt: question,
                     stream: false
                 },
                 this.#getCommonConfig()
             );
-
-            if (!response.data || !response.data.response) {
-                throw new AppError('Respuesta inválida de la IA', 500);
-            }
-
             return response.data.response;
         } catch (error) {
+            console.log(error);
             throw new AppError(
                 'Error en la comunicación con la IA',
                 error.response?.status || 500

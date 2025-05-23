@@ -29,4 +29,4 @@ EXPOSE 3060
 ENV NODE_ENV=production
 
 # Iniciar la aplicación
-CMD ["npm", "start"]
+CMD ["npm", "run", "dev"]

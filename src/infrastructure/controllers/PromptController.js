@@ -68,7 +68,7 @@ class PromptController {
             const { prompt } = req.body;
 
             const result = await this.promptService.processPrompt(prompt);
-            res.json(ApiResponse.success({ response: result }));
+            res.json({ response: result });
         } catch (error) {
             next(error);
         }
